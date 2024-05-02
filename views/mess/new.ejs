@@ -1,41 +1,48 @@
-<% layout('layouts/boilerplate') %>
-<div class="row">
-  <h2 class="text-center">New Campground</h2>
+<% layout('layouts/boilerplate') %> .
+<div class="row my-2">
+  <h2 class="text-center">New Mess</h2>
   <div class="col-6 offset-3">
     <form
-      action="/campgrounds/<%= campground._id%>?_method=PUT"
+      action="/messes"
       method="POST"
       novalidate
-      class="validated-form">
+      class="validated-form"
+      enctype="multipart/form-data">
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
         <input
           class="form-control"
           type="text"
           name="campground[title]"
-          id="title"
           required
-          value="<%= campground.title %>" />
+          id="title" />
       </div>
       <div class="mb-3">
-        <label class="form-label" for="price">Price</label>
+        <label class="form-label" for="price">Rent/Month</label>
         <input
           class="form-control"
           type="number"
           name="campground[price]"
-          id="price"
           required
-          value="<%= campground.price %>" />
+          id="price" />
       </div>
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label" for="Image">Image</label>
         <input
           class="form-control"
           type="text"
           name="campground[image]"
-          id="Image"
           required
-          value="<%= campground.image %>" />
+          id="Image" />
+      </div> -->
+      <div class="mb-3">
+        <label class="form-label" for="Image">Image</label>
+        <input
+          class="form-control"
+          type="file"
+          name="image"
+          required
+          id="Image" />
       </div>
       <div class="mb-3">
         <label class="form-label" for="location">Location</label>
@@ -43,9 +50,17 @@
           class="form-control"
           type="text"
           name="campground[location]"
-          id="location"
           required
-          value="<%= campground.location %>" />
+          id="location" />
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="mobile">Mobile</label>
+        <input
+          class="form-control"
+          type="text"
+          name="campground[mobile]"
+          required
+          id="mobile" />
       </div>
       <div class="mb-3">
         <label class="form-label" for="description">Description</label>
@@ -53,11 +68,9 @@
           class="form-control"
           name="campground[description]"
           required
-          id="description">
-<%= campground.description %></textarea
-        >
+          id="description"></textarea>
       </div>
-      <button class="btn btn-primary">Submit</button>
+      <button class="btn btn-success">Submit</button>
     </form>
   </div>
 </div>

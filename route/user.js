@@ -6,14 +6,14 @@ const passport = require('passport');
 router.get('/login', (req, res) => {
   if (req.isAuthenticated()) {
     req.flash('success', 'You are already logged in!');
-    return res.redirect('/campgrounds');
+    return res.redirect('/messes');
   }
   res.render('user/login');
 });
 router.get('/register', (req, res) => {
   if (req.isAuthenticated()) {
     req.flash('error', 'You must logout first');
-    return res.redirect('/campgrounds');
+    return res.redirect('/messes');
   }
   res.render('user/register');
 });
@@ -27,7 +27,7 @@ router.post(
       req.login(registeredUser, function (err) {
         if (err) return next(err);
         req.flash('success', 'You are registered');
-        return res.redirect('/campgrounds');
+        return res.redirect('/messes');
       });
     } catch (e) {
       req.flash('error', e.message);
@@ -43,7 +43,7 @@ router.post(
     keepSessionInfo: true,
   }),
   (req, res) => {
-    const redirectUrl = req.session.returnTo || '/campgrounds';
+    const redirectUrl = req.session.returnTo || '/messes';
     delete req.session.returnTo;
     req.flash('success', 'Welcome back!');
     res.redirect(redirectUrl);
@@ -55,7 +55,7 @@ router.get('/logout', (req, res, next) => {
       return next(err);
     }
     req.flash('success', 'Goodbye');
-    res.redirect('/campgrounds');
+    res.redirect('/messes');
   });
 });
 module.exports = router;

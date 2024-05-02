@@ -1,7 +1,7 @@
 body {
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('https://images.theconversation.com/files/345501/original/file-20200703-29-1b6b93y.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=1200&h=1200.0&fit=crop');
+    url('https://cdn-img.readytotrip.com/t/1024x768/content/cf/62/cf623118417e1b24182f0fe1f4acbeb1329f6c28.jpeg');
   background-size: cover;
   background-position: center;
   text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);

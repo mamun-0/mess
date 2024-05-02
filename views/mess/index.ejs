@@ -1,0 +1,112 @@
+<% layout('layouts/boilerplate') %>
+<div class="container-fluid">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="https://forbiddenjungleexplore.files.wordpress.com/2015/03/apgyvendinimas-vilniuje.jpg"
+          class="d-block w-100 object-cover"
+          height="500px"
+          alt="..."
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://i.travelapi.com/hotels/16000000/15040000/15037600/15037520/ba651955_z.jpg"
+          class="d-block w-100 object-cover"
+          height="500px"
+          alt="..."
+        />
+      </div>
+      <div class="carousel-item">
+        <img
+          src="https://www.floornature.com/media/photos/1/15891/10_Zero-Energy_Des_Lab-Hostel-St-Andrews_ph-AndreJFanthome_full.jpg"
+          class="d-block w-100 object-cover"
+          height="500px"
+          alt="..."
+        />
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="container">
+    <h2 class="display-5 text-center">Mess</h2>
+    <input
+      type="text"
+      class="form-control my-3 campground-search"
+      type="text"
+      name="search"
+      placeholder="Search Mess..."
+      aria-label="Search"
+    />
+    <div class="row">
+      <% for(let campground of campgrounds){ %>
+      <div class="col-4">
+        <div class="card mb-4 shadow card-hover" style="width: 18rem">
+          <img
+            src="<%= campground.image %>"
+            class="card-img-top"
+            alt="cardImage"
+            width="300px"
+            height="200px"
+          />
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title"><%= campground.title %></h5>
+              <h5 class="card-title">
+                <h4 class="d-inline">&#2547;<%=campground.price%></h4>
+              </h5>
+            </div>
+            <a class="btn btn-info" href="/messes/<%= campground._id %>"
+              >Details</a
+            >
+          </div>
+        </div>
+      </div>
+      <%} %>
+    </div>
+  </div>
+</div>

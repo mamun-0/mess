@@ -15,7 +15,7 @@ router.get(
   '/',
   wrapAsync(async (req, res) => {
     const campgrounds = await Campground.find({});
-    res.render('campground/index', { campgrounds });
+    res.render('mess/index', { campgrounds });
   })
 );
 
@@ -34,11 +34,11 @@ router.post(
     await newReview.save();
     await campground.save();
     req.flash('success', 'Review created successfully.');
-    res.redirect(`/campgrounds/${id}`);
+    res.redirect(`/messes/${id}`);
   })
 );
 router.get('/new', isLoggedin, (req, res) => {
-  res.render('campground/new');
+  res.render('mess/new');
 });
 router.post(
   '/',
@@ -51,8 +51,8 @@ router.post(
     newCampground.author = req.user._id;
     newCampground.image = req.file.path;
     await newCampground.save();
-    req.flash('success', 'Successfully created campground');
-    res.redirect(`/campgrounds/${newCampground._id}`);
+    req.flash('success', 'Successfully created mess');
+    res.redirect(`/messes/${newCampground._id}`);
   })
 );
 router.get(
@@ -61,7 +61,7 @@ router.get(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
-    res.render('campground/edit', { campground });
+    res.render('mess/edit', { campground });
   })
 );
 router.put(
@@ -74,8 +74,8 @@ router.put(
     await Campground.findByIdAndUpdate(id, {
       ...campground,
     });
-    req.flash('success', 'Successfully updated campground');
-    res.redirect(`/campgrounds/${id}`);
+    req.flash('success', 'Successfully updated Mess');
+    res.redirect(`/messes/${id}`);
   })
 );
 router.get(
@@ -86,10 +86,10 @@ router.get(
       .populate({ path: 'reviews', populate: { path: 'author' } })
       .populate('author');
     if (!campground) {
-      req.flash('error', 'Campground not found!');
-      return res.redirect('/campgrounds');
+      req.flash('error', 'Mess not found!');
+      return res.redirect('/messes');
     }
-    res.render('campground/show', { campground });
+    res.render('mess/show', { campground });
   })
 );
 router.delete(
@@ -98,8 +98,8 @@ router.delete(
   wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
-    req.flash('success', 'Successfully deleted campground');
-    res.redirect('/campgrounds');
+    req.flash('success', 'Successfully deleted Mess');
+    res.redirect('/messes');
   })
 );
 router.delete(
@@ -110,7 +110,7 @@ router.delete(
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
     await Review.findByIdAndDelete(reviewId);
     req.flash('success', 'Successfully deleted review');
-    res.redirect(`/campgrounds/${id}`);
+    res.redirect(`/messes/${id}`);
   })
 );
 
